@@ -1,3 +1,8 @@
 
 *.iml
 /.idea
+Hello.xlass
+Hello.xxxx
+/Week_01/target/*
+/week_02/target/*
+/Week_01/src/main/Hello.class
