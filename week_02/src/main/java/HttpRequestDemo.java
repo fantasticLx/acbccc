@@ -1,3 +1,4 @@
+import java.util.logging.Logger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -19,13 +20,14 @@ import java.io.IOException;
 
 /**
  * @ClassName HttpRequestDemo
- * @Description TODO
+ * @Description http客户端demo
  * @Author Shaldon
  * @Date 2020/10/25 10:25
  * @Version 1.0
  */
 public class HttpRequestDemo {
     public static void main(String[] args) {
+        Logger logger = Logger.getLogger("demo");
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
         HttpGet httpGet = new HttpGet("http://localhost:8801/");
@@ -36,8 +38,7 @@ public class HttpRequestDemo {
             if (200 == httpResponse.getStatusLine().getStatusCode()){
                 HttpEntity response = httpResponse.getEntity();
                 if (response != null){
-                    System.out.println("http response entity length = [" + response.getContentLength() +"]");
-                    System.out.println("response content = [" + EntityUtils.toString(response) +"]");
+                    logger.info("response content = [" + EntityUtils.toString(response) +"]");
                 }
             }
         } catch (IOException e) {

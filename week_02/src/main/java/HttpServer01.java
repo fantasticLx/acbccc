@@ -14,7 +14,9 @@ import java.util.logging.Logger;
 public class HttpServer01 {
     public static void main(String[] args) throws IOException {
         Logger logger = Logger.getLogger("HttpServer01");
-        ServerSocket serverSocket = new ServerSocket(8801);
+        int port = 8801;
+        ServerSocket serverSocket = new ServerSocket(port);
+        logger.info("server stared... listened at " + port + " ........");
         while (true){
             try {
                 Socket socket = serverSocket.accept();

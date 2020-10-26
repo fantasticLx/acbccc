@@ -13,10 +13,16 @@ import java.nio.file.Paths;
  **/
 public class MyClassLoader extends ClassLoader{
 
+  private String path;
+
+  public MyClassLoader(String path) {
+    this.path = path;
+  }
+
   public static void main(String[] args)
       throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
 
-    MyClassLoader myClassLoader = new MyClassLoader();
+    MyClassLoader myClassLoader = new MyClassLoader("Hello.xlass");
     Class<?> c = myClassLoader.findClass("Hello");
     Method m = c.getMethod("hello");
     m.invoke(c.newInstance());
@@ -25,7 +31,6 @@ public class MyClassLoader extends ClassLoader{
 
   @Override
   protected Class<?> findClass(String name) {
-    String path = "Hello.xlass";
     byte[] classCode = getClassCode(path);
 //    String base64 = "yv66vgAAADQAHAoABgAOCQAPABAIABEKABIAEwcAFAcAFQEABjxpbml0PgEAAygpVgEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBAAVoZWxsbwEAClNvdXJjZUZpbGUBAApIZWxsby5qYXZhDAAHAAgHABYMABcAGAEAE0hlbGxvLCBjbGFzc0xvYWRlciEHABkMABoAGwEABUhlbGxvAQAQamF2YS9sYW5nL09iamVjdAEAEGphdmEvbGFuZy9TeXN0ZW0BAANvdXQBABVMamF2YS9pby9QcmludFN0cmVhbTsBABNqYXZhL2lvL1ByaW50U3RyZWFtAQAHcHJpbnRsbgEAFShMamF2YS9sYW5nL1N0cmluZzspVgAhAAUABgAAAAAAAgABAAcACAABAAkAAAAdAAEAAQAAAAUqtwABsQAAAAEACgAAAAYAAQAAAAEAAQALAAgAAQAJAAAAJQACAAEAAAAJsgACEgO2AASxAAAAAQAKAAAACgACAAAABAAIAAUAAQAMAAAAAgAN";
 //    byte[] classCode = Base64.getDecoder().decode(base64);
