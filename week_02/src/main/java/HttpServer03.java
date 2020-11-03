@@ -25,6 +25,10 @@ public class HttpServer03 {
     }
 
     private static void service(Socket socket) {
+
+    }
+
+    private static void service2(Socket socket) {
         try {
             Thread.sleep(20);
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
