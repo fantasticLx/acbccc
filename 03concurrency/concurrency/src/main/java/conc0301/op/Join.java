@@ -11,16 +11,16 @@ public class Join {
         MyThread thread1 = new MyThread("thread1 -- ");
         thread1.setOo(oo);
         thread1.start();
-        Thread.sleep(2);
+//        Thread.sleep(2);
         synchronized (thread1) {
             for (int i = 0; i < 100; i++) {
                 Thread.sleep(100);
                 if (i == 20) {
-//                    try {
-//                        thread1.join();
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+                    try {
+                        thread1.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
                 System.out.println(Thread.currentThread().getName() + " -- " + i);
             }
