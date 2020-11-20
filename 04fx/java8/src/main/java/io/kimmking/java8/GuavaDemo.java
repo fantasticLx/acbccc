@@ -21,7 +21,9 @@ import java.util.Map;
 
 public class GuavaDemo {
     
+    // 声明全局的事件总线
     static EventBus bus = new EventBus();
+    // 注册被监听的对象
     static {
         bus.register(new GuavaDemo());
     }
@@ -49,6 +51,7 @@ public class GuavaDemo {
         // 
         Student student2 = new Student(2, "KK02");
         System.out.println("I want " + student2 + " run now.");
+        // 发布事件
         bus.post(new AEvent(student2));
     }
     
@@ -108,7 +111,8 @@ public class GuavaDemo {
     public static class AEvent{
         private Student student;
     }
-    
+
+    // 被监听对象处理事件方法，方便解耦
     @Subscribe
     public void handle(AEvent ae){
         System.out.println(ae.student + " is running.");

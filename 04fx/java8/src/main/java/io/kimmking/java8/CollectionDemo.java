@@ -18,7 +18,7 @@ public class CollectionDemo {
         Collections.shuffle(list);
         print(list);
     
-        System.out.println(Collections.frequency(list, 2));
+        System.out.println(Collections.frequency(list, 4));
         System.out.println(Collections.max(list));
                 
         Collections.fill(list,8);
